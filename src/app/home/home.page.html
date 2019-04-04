@@ -7,6 +7,8 @@
 </ion-header>
 
 <ion-content>
+  <ion-input placeholder="영화검색" [(ngModel)]="searchText"></ion-input>
+  <ion-button expand="block" (click)="searchMovies()">검색</ion-button>
   <ul>
     <li *ngFor="let movie of movies">
       <p>{{movie.title}}</p>

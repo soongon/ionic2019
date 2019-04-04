@@ -9,12 +9,41 @@ import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 })
 export class HomePage implements OnInit{
 
+    searchText: string;
+
   movies: MovieModel[];
 
   constructor(private http: HttpClient) {}
 
+  searchMovies() {
+      // 파라미터 설정
+      const params = new HttpParams()
+          .set('query', this.searchText);
+      // 헤더 설정
+      const headers = new HttpHeaders()
+          .set('X-Naver-Client-Id','vYGdytfBsHznI2IuhhGt')
+          .set('X-Naver-Client-Secret','uyJjxWtwU8');
+
+      // CORS 에러 회피용 크롬 실행 옵션
+      //--user-data-dir="c:/logs" --disable-web-security
+      this.http.get<MovieModel[]>(
+          'https://openapi.naver.com/v1/search/movie.json',
+          {params, headers})
+          .subscribe(res => {
+              this.movies = res.items;
+              console.log(this.movies);
+          });
+      this.searchText = '';
+  }
+
   // 네이버 접속해서 데이터를 가져온다.
   ngOnInit(): void {
+
+      // this.http.get<MovieModel[]>('assets/movies.json')
+      //     .subscribe(res => {
+      //         this.movies = res;
+      //     });
+
     // 파라미터 설정
     const params = new HttpParams()
         .set('query','극한직업');
@@ -23,11 +52,13 @@ export class HomePage implements OnInit{
         .set('X-Naver-Client-Id','vYGdytfBsHznI2IuhhGt')
         .set('X-Naver-Client-Secret','uyJjxWtwU8');
 
+    // CORS 에러 회피용 크롬 실행 옵션
+      //--user-data-dir="c:/logs" --disable-web-security
     this.http.get<MovieModel[]>(
         'https://openapi.naver.com/v1/search/movie.json',
         {params, headers})
         .subscribe(res => {
-          this.movies = res;
+          this.movies = res.items;
           console.log(this.movies);
         });
     console.log('code.........................');
