@@ -15,7 +15,11 @@ export class HomePage implements OnInit{
 
   // 네이버 접속해서 데이터를 가져온다.
   ngOnInit(): void {
-
+    this.http.get('assets/movies.json')
+        .subscribe(function(res) {
+          this.movies = res;
+        });
+    console.log('code.........................');
   }
 
 }
