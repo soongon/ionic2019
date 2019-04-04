@@ -45,3 +45,52 @@ export class MovieService {
 
   }
 }
+
+/*
+// 파라미터 설정
+      const params = new HttpParams()
+          .set('query', this.searchText);
+      // 헤더 설정
+      const headers = new HttpHeaders()
+          .set('X-Naver-Client-Id','vYGdytfBsHznI2IuhhGt')
+          .set('X-Naver-Client-Secret','uyJjxWtwU8');
+
+      // CORS 에러 회피용 크롬 실행 옵션
+      //--user-data-dir="c:/logs" --disable-web-security
+      this.http.get<MovieModel[]>(
+          'https://openapi.naver.com/v1/search/movie.json',
+          {params, headers})
+          .subscribe(res => {
+              this.movies = res.items;
+              console.log(this.movies);
+          });
+      this.searchText = '';
+ */
+
+/*
+   // this.http.get<MovieModel[]>('assets/movies.json')
+      //     .subscribe(res => {
+      //         this.movies = res;
+      //     });
+
+    // 파라미터 설정
+    const params = new HttpParams()
+        .set('query','극한직업');
+    // 헤더 설정
+    const headers = new HttpHeaders()
+        .set('X-Naver-Client-Id','vYGdytfBsHznI2IuhhGt')
+        .set('X-Naver-Client-Secret','uyJjxWtwU8');
+
+    // CORS 에러 회피용 크롬 실행 옵션
+      //--user-data-dir="c:/logs" --disable-web-security
+    this.http.get<MovieModel[]>(
+        'https://openapi.naver.com/v1/search/movie.json',
+        {params, headers})
+        .subscribe(res => {
+          this.movies = res.items;
+          console.log(this.movies);
+        });
+    console.log('code.........................');
+
+    //this.getGithub();
+ */
